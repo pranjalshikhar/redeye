@@ -1,11 +1,26 @@
-import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
+  const [filmData, setFilmData] = useState({});
+  const filmListURL = process.env.REACT_APP_FILM_LIST_URL;
+
+  useEffect(() => {
+    const getFilmData = async () => {
+      const response = await fetch(filmListURL);
+      const data = await response.json();
+      console.log(data.results);
+      setFilmData(data.results);
+    };
+
+    getFilmData();
+  }, []);
+
   return (
     <>
-      <div className="ratings-final align-items-center">
-        {finalAgeRating || finalAgeRating === 0 ? (
-          <>
+      <div className="app d-flex flex-column">
+        <div className="ratings-final align-items-center">
+          {finalAgeRating || finalAgeRating === 0 ? (
             <div className="ratings-content">
               <img
                 src={`/img/icon-${ratingsList[finalAgeRating]}.svg`}
@@ -30,23 +45,33 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
                 </p>
               </div>
             </div>
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
-      <div className="overview-section">
-        <h3>The ratings are:</h3>
-        <div className="overview-item-container">
-          {answers.map((answer, i) => (
-            <div key={i} className="overview-item">
-              <img src={`/img/icon-${answer.categoryRating}.svg`} alt="" />
-              <p className="d-flex flex-column justify-content-center">
-                {answer.categoryTitle}
-              </p>
-            </div>
-          ))}
+          ) : (
+            <></>
+          )}
         </div>
+      </div>
+
+      <div className="app d-flex flex-column">
+        <div className="overview-section">
+          <h3>Here's the details...</h3>
+          <div className="overview-item-container">
+            {answers.map((answer, i) => (
+              <div key={i} className="overview-item">
+                <img src={`/img/icon-${answer.categoryRating}.svg`} alt="" />
+                <p className="d-flex flex-column justify-content-center">
+                  {answer.categoryTitle}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="app d-flex flex-column">
+        {/* <h5 className="info-item">{filmData[0].original_title}</h5> */}
+        {/* <h5 className="info-item">{filmData.location}</h5>
+            <h5 className="info-item">{filmData.blog}</h5>
+            <h5 className="info-item">{filmData.company}</h5> */}
       </div>
     </>
   );

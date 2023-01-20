@@ -192,10 +192,15 @@ button svg {
   text-align: center;
 }
 
+.overview-section h3 {
+  margin-bottom: 1rem;
+}
+
 .overview-item-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .overview-item {
@@ -261,6 +266,10 @@ button svg {
     width: 33%;
   }
 
+  .overview-item-container {
+    justify-content: center;
+  }
+
   .overview-final .ratings-content {
     flex-direction: row;
     text-align: left;
@@ -280,6 +289,10 @@ button svg {
 
   .overview-item {
     width: 25%;
+  }
+
+  .overview-item-container {
+    justify-content: flex-start;
   }
 
   .overview-item img {

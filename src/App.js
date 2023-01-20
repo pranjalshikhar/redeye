@@ -315,10 +315,6 @@ const App = () => {
     }
 
     useEffect(() => {
-      if (finalAgeRating === 1) {
-        console.log(`Set the color here : ${finalAgeRating}`);
-      }
-
       setRatingColor(colors[finalAgeRating]);
     }, [finalAgeRating]);
   };
@@ -326,16 +322,16 @@ const App = () => {
   return (
     <>
       <Header />
-      <div className="app d-flex flex-column">
-        {showRating ? (
-          <FinalRating
-            finalAgeRating={finalAgeRating}
-            ratingColor={ratingColor}
-            ratingsList={ratingsList}
-            answers={answers}
-          />
-        ) : (
-          <>
+      {showRating ? (
+        <FinalRating
+          finalAgeRating={finalAgeRating}
+          ratingColor={ratingColor}
+          ratingsList={ratingsList}
+          answers={answers}
+        />
+      ) : (
+        <>
+          <div className="app d-flex flex-column">
             <div className="question-section">
               <div className="question-title">
                 <h2>{topics[currentTopic].categoryTitle}</h2>
@@ -362,20 +358,17 @@ const App = () => {
                     <span className="d-flex align-items-center">
                       <img
                         src={`/images/circle-${answerOption.ageRating}.svg`}
+                        alt=""
                       />
-                      {answerOption.annswerText}
+                      {answerOption.answerText}
                     </span>
                   </button>
                 </div>
               ))}
             </div>
-            <div className="question-count ml-auto">
-              <span className="font-weight-bold">{currentTopic + 1}</span>
-              {topics.length}
-            </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
