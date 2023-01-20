@@ -164,17 +164,17 @@ const App = () => {
   const handleAnswerOptionClick = (ageRating, category) => {
     setAnswers([...answers, addRatingItem(category, ageRating)]);
 
-    console.log(answers);
+    // console.log(answers);
     const ratingRank = ratingsList.findIndex((rating) => rating === ageRating);
-    console.log(ratingRank);
+    // console.log(ratingRank);
 
     if (finalAgeRating < ratingRank) {
       setFinalAgeRating(ratingRank);
     }
 
     setSiteBackgroundImage(
-      (document.body.style.backgroundImage = `url(${
-        backgroundImage[answers.length]
+      (document.body.style.backgroundImages = `url(${
+        backgroundImages[answers.length]
       })`)
     );
 
@@ -270,12 +270,12 @@ const App = () => {
             </div>
             <div className="answer-section d-flex">
               {topics[currentTopic].answerOptions.map((answerOption, i) => (
-                <div className="answer-item">
+                <div className="answer-item" key={i}>
                   <button
                     onClick={() =>
                       handleAnswerOptionClick(
                         answerOption.ageRating,
-                        topicsp[currentTopic].categoryTitle
+                        topics[currentTopic].categoryTitle
                       )
                     }
                     key={i++}
