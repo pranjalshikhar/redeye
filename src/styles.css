@@ -75,14 +75,26 @@ h5 {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  margin-bottom: 12px;
 }
 
 .ratings-final .ratings-content img {
-  width: 49%;
-  margin-right: 20px;
+  width: 50%;
+  margin-right: 0px;
 }
 
-.ratings-final h3 {
+.ratings-final p {
+  font-size: 1.2rem;
+}
+
+.ratings-final img {
+  width: 275px;
+  height: 275px;
+  margin-right: 20px;
+  float: left;
+}
+
+.ratings-final h2 {
   margin-bottom: 1rem;
 }
 
@@ -90,17 +102,25 @@ h5 {
 .question-section {
   width: 100%;
   position: relative;
-}
-
-.question-count span {
-  font-size: 28px;
-}
-
-.question-text {
   margin-bottom: 12px;
 }
 
-.question-text p {
+.question-count {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  color: rgba(46, 53, 58, 0.5);
+}
+
+/* .question-count span {
+  font-size: 28px;
+} */
+
+.question-title {
+  display: flex;
+}
+
+.question-description p {
   font-size: 1.2rem;
   margin-bottom: 0px;
 }
@@ -165,21 +185,11 @@ button svg {
   margin-right: 5px;
 }
 
-.ratings-final p {
-  font-size: 1.2rem;
-}
-
-.ratings-final img {
-  width: 275px;
-  height: 275px;
-  margin-right: 20px;
-  float: left;
-}
-
 /* overview section (bottom) */
 .overview-section {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .overview-item-container {
@@ -191,7 +201,6 @@ button svg {
 .overview-item {
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid #e0e0e0;
   margin-bottom: 8px;
   margin-top: 2px;
   width: 50%;
@@ -233,10 +242,7 @@ button svg {
     width: 20%;
   }
 
-  .ratings-final .ratings-content {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: row;
+  .overview-section {
     text-align: left;
   }
 
@@ -253,6 +259,16 @@ button svg {
 
   .overview-item {
     width: 33%;
+  }
+
+  .overview-final .ratings-content {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .ratings-final .ratings-content img {
+    width: 25%;
+    margin-right: 12px;
   }
 }
 

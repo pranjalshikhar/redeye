@@ -24,11 +24,11 @@ const topics = [
   {
     categoryTitle: "Dangerous Behaviour",
     categoryDescription:
-      "Potentially dangerous or anti-social behaviour is clearly disapproved of. No emphasis on realistic or easily accessible weapons.",
+      "Please describe the way that dangerous behaviour is depicted in your film. This could include risky acts, self-harm or the use of weapons.",
     answerOptions: [
       {
         answerText:
-          "Potentially dangerous or anti-social clearly disapproved of. No emphasis on weapons.",
+          "Potentially dangerous or anti-social behaviour is clearly disapproved of, and no emphasis is placed on weapons.",
         ageRating: "U",
       },
       {
@@ -38,17 +38,17 @@ const topics = [
       },
       {
         answerText:
-          "No promotion of potentially dangerous behaviour which children are likely to copy. No glamorisation of realistic or easily accessible weapons such as knives. No endorsement of anti-social behaviour.",
+          "Potentially dangerous behaviour features but is not promoted, and weapons are featured, also (but not glamorised). Anti-social behaviour is not endorsed in the film.",
         ageRating: "12",
       },
       {
         answerText:
-          "Dangerous behaviour (for example, suicide, self-harming and asphyxiation) should not dwell on detail which could be copied. Whether the depiction of easily accessible weapons is acceptable will depend on factors such as realism, context and setting.",
+          "Dangerous behaviour (for example, suicide, self-harming and asphyxiation) feature but with little detail, so they cannot be copied. Weapons are featured but are contextually appropriate.",
         ageRating: "15",
       },
       {
         answerText:
-          "Characters are shown engaging in dangerous behaviour such as self-harming and some gory detail is shown. Weapons feature regularly throughout the film.",
+          "Characters are shown engaging in dangerous behaviour such as self-harming and some gory detail is shown. If weapons are featured, they are used regularly throughout the film.",
         ageRating: "18",
       },
     ],
@@ -57,7 +57,7 @@ const topics = [
   {
     categoryTitle: "Discrimination",
     categoryDescription:
-      "The work as a whole must not endorse discriminatory language or behaviour, although there may be racist, homophobic or other discriminatory themes and language.",
+      "Please describe the way that discrimination such as racism or homophobic feature in your film.",
     answerOptions: [
       {
         answerText:
@@ -90,7 +90,7 @@ const topics = [
   {
     categoryTitle: "Drugs",
     categoryDescription:
-      "Drug taking may be shown but the work as a whole must not promote or encourage drug misuse (for example, through detailed instruction). The misuse of easily accessible and highly dangerous substances (for example, aerosols or solvents) is unlikely to be acceptable.",
+      "Please describe the way that illegal drugs or drug misuse feature in your film.",
     answerOptions: [
       {
         answerText:
@@ -123,7 +123,7 @@ const topics = [
   {
     categoryTitle: "Language",
     categoryDescription:
-      "There may be strong language. Very strong language may be permitted, depending on the manner in which it is used, who is using the language, its frequency within the work as a whole and any special contextual justification.",
+      "Please describe the way that bad language features in your film.",
     answerOptions: [
       {
         answerText: "Infrequent use only of very mild bad language.",
@@ -186,7 +186,7 @@ const topics = [
   {
     categoryTitle: "Threat and Horror",
     categoryDescription:
-      "There may be strong threat and horror. A sustained focus on sadistic threat is unlikely to be acceptable.",
+      "Please describe the way that threat and horror feature in your film.",
     answerOptions: [
       {
         answerText:
@@ -219,7 +219,7 @@ const topics = [
   {
     categoryTitle: "Violence",
     categoryDescription:
-      "Violence may be strong but should not dwell on the infliction of pain or injury. The strongest gory images are unlikely to be acceptable. Strong sadistic violence is also unlikely to be acceptable.",
+      "Please describe the way that violence features in your film.",
     answerOptions: [
       {
         answerText:
@@ -335,10 +335,15 @@ const App = () => {
             answers={answers}
           />
         ) : (
-          <div className="d-flex flex-column">
-            <div className="question-section d-flex flex-column align-items-start">
-              <div className="question-text">
+          <>
+            <div className="question-section">
+              <div className="question-title">
                 <h2>{topics[currentTopic].categoryTitle}</h2>
+                <div className="question-count">
+                  Step {currentTopic + 1} of {topics.length}
+                </div>
+              </div>
+              <div className="question-description">
                 <p>{topics[currentTopic].categoryDescription}</p>
               </div>
             </div>
@@ -368,7 +373,7 @@ const App = () => {
               <span className="font-weight-bold">{currentTopic + 1}</span>
               {topics.length}
             </div>
-          </div>
+          </>
         )}
       </div>
     </>
