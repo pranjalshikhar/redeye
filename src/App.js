@@ -3,6 +3,7 @@ import { animated, config, useSpring } from "react-spring";
 import { Content, Footer, Header } from "./components";
 
 const App = () => {
+  // Background Scroll Function
   window.addEventListener(
     "scroll",
     () => {
@@ -101,7 +102,7 @@ const App = () => {
               className="circle-bg landing-right"
             >
               <animated.img
-                src="/img/rmf-export.png"
+                src="/images/rmf-export.png"
                 style={mediumDelay}
                 className="mockup"
               />
