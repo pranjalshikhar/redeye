@@ -53,7 +53,7 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
 
       <div className="app d-flex flex-column">
         <div className="overview-section">
-          <h3>Here's the details...</h3>
+          <h3>Ratings by Category.</h3>
           <div className="overview-item-container">
             {answers.map((answer, i) => (
               <div key={i} className="overview-item">
@@ -69,40 +69,48 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
 
       <div className="app d-flex flex-column">
         {filmData ? (
-          <div class="film-items">
-            <div className="item">
-              <img
-                src={`https://image.tmdb.org/t/p/original/${filmData[0].poster_path}`}
-              />
-              <h5 className="info-item">
-                {filmData[0].original_title} (
-                {filmData[0].release_date.substr(0, 4)})
-              </h5>
-              <p>{filmData[0].overview.substr(0, 200)}...</p>
-            </div>
+          <>
+            <h2>
+              Other
+              <span style={{ color: ratingColor }}>
+                {ratingsList[finalAgeRating]}
+              </span>
+            </h2>
+            <div class="film-items">
+              <div className="item">
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${filmData[0].poster_path}`}
+                />
+                <h5 className="info-item">
+                  {filmData[0].original_title} (
+                  {filmData[0].release_date.substr(0, 4)})
+                </h5>
+                <p>{filmData[0].overview.substr(0, 200)}...</p>
+              </div>
 
-            <div className="item">
-              <img
-                src={`https://image.tmdb.org/t/p/original/${filmData[1].poster_path}`}
-              />
-              <h5 className="info-item">
-                {filmData[1].original_title} (
-                {filmData[1].release_date.substr(0, 4)})
-              </h5>
-              <p>{filmData[1].overview.substr(0, 200)}...</p>
-            </div>
+              <div className="item">
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${filmData[1].poster_path}`}
+                />
+                <h5 className="info-item">
+                  {filmData[1].original_title} (
+                  {filmData[1].release_date.substr(0, 4)})
+                </h5>
+                <p>{filmData[1].overview.substr(0, 200)}...</p>
+              </div>
 
-            <div className="item">
-              <img
-                src={`https://image.tmdb.org/t/p/original/${filmData[2].poster_path}`}
-              />
-              <h5 className="info-item">
-                {filmData[2].original_title} (
-                {filmData[2].release_date.substr(0, 4)})
-              </h5>
-              <p>{filmData[2].overview.substr(0, 200)}...</p>
+              <div className="item">
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${filmData[2].poster_path}`}
+                />
+                <h5 className="info-item">
+                  {filmData[2].original_title} (
+                  {filmData[2].release_date.substr(0, 4)})
+                </h5>
+                <p>{filmData[2].overview.substr(0, 200)}...</p>
+              </div>
             </div>
-          </div>
+          </>
         ) : (
           "Not rendered"
         )}
