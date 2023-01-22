@@ -40,20 +40,16 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
 
     if (ratedCategories.length === 1) {
       ratedCategoryLastItem.push(`${ratedCategories.splice(-1)}`);
-      console.log(`The last item is ${ratedCategoryLastItem}`);
     } else if (ratedCategories.length > 1) {
       ratedCategoryLastItem.push(`and ${ratedCategories.splice(-1)}`);
-      console.log(
-        `There is more than one item and it is ${ratedCategoryLastItem}`
-      );
     } else {
-      console.log(`The other condition`);
+      console.log(`No conditions have been met.`);
     }
   }, [ratingsList, finalAgeRating, answers]);
 
   return (
     <>
-      <div className="app d-flex flex-column">
+      <div className="wrapper">
         <div className="ratings-final align-items-center">
           {finalAgeRating || finalAgeRating === 0 ? (
             <div className="ratings-content">
@@ -89,13 +85,13 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
         </div>
       </div>
 
-      <div className="app d-flex flex-column">
+      <div className="wrapper">
         <div className="overview-section">
           <h3>Ratings by Category.</h3>
           <div className="overview-item-container">
             {answers.map((answer, i) => (
               <div key={i} className="overview-item">
-                <img src={`/img/icon-${answer.categoryRating}.svg`} alt="" />
+                <img src={`/images/icon-${answer.categoryRating}.svg`} alt="" />
                 <p className="d-flex flex-column justify-content-center">
                   {answer.categoryTitle}
                 </p>
@@ -105,7 +101,7 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
         </div>
       </div>
 
-      <div className="app d-flex flex-column">
+      <div className="wrapper column">
         {filmData ? (
           <>
             <h3>

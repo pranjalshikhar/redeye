@@ -36,7 +36,7 @@ h3 {
   margin-bottom: 1rem;
 }
 
-.app {
+.wrapper {
   background-color: #fff;
   min-height: 200px;
   height: min-content;
@@ -46,6 +46,10 @@ h3 {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 30px;
+}
+
+.column {
+  flex-direction: column;
 }
 
 .header {
@@ -245,11 +249,12 @@ button svg {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-right: 10px;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .app {
+  .wrapper {
     width: 440px;
   }
 
@@ -264,7 +269,7 @@ button svg {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .app {
+  .wrapper {
     width: 560px;
   }
 
@@ -279,7 +284,7 @@ button svg {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .app {
+  .wrapper {
     width: 718px;
   }
 
@@ -330,7 +335,7 @@ button svg {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .app {
+  .wrapper {
     width: 942px;
   }
 
@@ -349,7 +354,7 @@ button svg {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .app {
+  .wrapper {
     width: 1100px;
   }
 }

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import FinalRating from "./components/FinalRating";
-import Header from "./components/Header";
+// import FinalRating from "./components/FinalRating";
+// import Header from "./components/Header";
+import { FinalRating, Header, Questions } from "./components";
+import { useSpring, animated, config } from "react-spring";
 
 const backgroundImages = [
   // default
@@ -330,44 +332,12 @@ const App = () => {
           answers={answers}
         />
       ) : (
-        <>
-          <div className="app d-flex flex-column">
-            <div className="question-section">
-              <div className="question-title">
-                <h2>{topics[currentTopic].categoryTitle}</h2>
-                <div className="question-count">
-                  Step {currentTopic + 1} of {topics.length}
-                </div>
-              </div>
-              <div className="question-description">
-                <p>{topics[currentTopic].categoryDescription}</p>
-              </div>
-            </div>
-            <div className="answer-section d-flex">
-              {topics[currentTopic].answerOptions.map((answerOption, i) => (
-                <div className="answer-item" key={i}>
-                  <button
-                    onClick={() =>
-                      handleAnswerOptionClick(
-                        answerOption.ageRating,
-                        topics[currentTopic].categoryTitle
-                      )
-                    }
-                    key={i++}
-                  >
-                    <span className="d-flex align-items-center">
-                      <img
-                        src={`/images/circle-${answerOption.ageRating}.svg`}
-                        alt=""
-                      />
-                      {answerOption.answerText}
-                    </span>
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        </>
+        <Questions
+          topics={topics}
+          handleAnswerOptionClick={handleAnswerOptionClick}
+          currentTopic={currentTopic}
+          setCurrentTopic={setCurrentTopic}
+        />
       )}
     </>
   );
