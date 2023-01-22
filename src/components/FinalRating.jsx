@@ -23,7 +23,7 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
           {finalAgeRating || finalAgeRating === 0 ? (
             <div className="ratings-content">
               <img
-                src={`/img/icon-${ratingsList[finalAgeRating]}.svg`}
+                src={`/images/icon-${ratingsList[finalAgeRating]}.svg`}
                 alt="Final film rating icon"
               />
               <div className="ratings-title">
@@ -71,10 +71,11 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
         {filmData ? (
           <>
             <h2>
-              Other
+              Other{" "}
               <span style={{ color: ratingColor }}>
                 {ratingsList[finalAgeRating]}
-              </span>
+              </span>{" "}
+              rated films.
             </h2>
             <div class="film-items">
               <div className="item">
