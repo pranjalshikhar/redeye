@@ -1,20 +1,53 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
+let ratedCategories = [];
+let ratedCategoryList = [];
+let ratedCategoryListItem = [];
+
+function search(objectItem, answersArray) {
+  for (var i = 0; i < answersArray.length; i++) {
+    if (answersArray[i].categoryRating === objectItem) {
+      ratedCategories.push(answersArray[i].categoryTitle.toLowerCase());
+    }
+  }
+}
+
+const ratingDescription = {
+  U: `A U film should be suitable for audiences aged four years and over, although it is impossible to predict what might upset any particular child. U films should be set within a positive framework and should offer reassuring counterbalances to any violence, threat or horror.`,
+  PG: `General viewing, but some scenes may be unsuitable for young children. A PG film should not unsettle a child aged around eight or older. Unaccompanied children of any age may watch, but parents are advised to consider whether the content may upset younger, or more sensitive, children.`,
+  12: `Films classified 12A and video works classified 12 contain material that is not generally suitable for children aged under 12. No one younger than 12 may see a 12A film in a cinema unless accompanied by an adult. Adults planning to take a child under 12 to view a 12A film should consider whether the film is suitable for that child. To help them decide, we recommend that they check the Ratings Info for that film in advance. No one younger than 12 may rent or buy a 12 rated video work.`,
+  15: `No one younger than 15 may see a 15 film in a cinema. No one younger than 15 may rent or buy a 15 rated video work.`,
+  18: `No one younger than 18 may see an 18 film in a cinema. No one younger than 18 may rent or buy an 18 rated video work. Adults should be free to choose their own entertainment.`,
+};
+
 const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
   const [filmData, setFilmData] = useState(null);
   const filmListURL = `https://api.themoviedb.org/3/discover/movie?api_key=ed6d6a1005f39467d292d967980f2f11&certification_country=GB&certification=${ratingsList[finalAgeRating]}&with_original_language=en&sort_by=revenue.desc`;
 
   useEffect(() => {
+    search(ratingsList[finalAgeRating], answers);
+
+    ratedCategoryList.push(ratedCategories.slice(0, -1).join(", "));
+
+    if (ratedCategories.length === 1) {
+      ratedCategoryListItem.push(`${ratedCategories.splice(-1)}`);
+    } else if (ratedCategories.length > 1) {
+      ratedCategoryListItem.push(`and ${ratedCategories.splice(-1)}`);
+    } else {
+      console.log(`The other condition`);
+    }
+  }, [ratingsList, finalAgeRating, answers]);
+
+  useEffect(() => {
     const getFilmData = async () => {
       const response = await fetch(filmListURL);
       const data = await response.json();
-      console.log(data.results);
       setFilmData(data.results);
     };
 
     getFilmData();
-  }, []);
+  }, [filmListURL]);
 
   return (
     <>
@@ -32,17 +65,20 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
                   <span style={{ color: ratingColor }}>
                     {ratingsList[finalAgeRating]}
                   </span>{" "}
-                  rated film
+                  rated film.
                 </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                  consequat ornare maximus. Praesent porta felis eu tortor
-                  facilisis placerat. Phasellus rutrum dapibus auctor. Phasellus
-                  vulputate, nisl sit amet elementum imperdiet, metus leo
-                  pellentesque turpis, sed fermentum quam nulla quis libero. Ut
-                  sit amet orci semper, euismod leo sit amet, bibendum mi. Lorem
-                  ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
+                <p>{ratingDescription[`${ratingsList[finalAgeRating]}`]}</p>
+                {ratedCategoryList.length !== 0 ? (
+                  <p>
+                    This film has been rated this way because it features{" "}
+                    <span style={{ color: ratingColor, fontWeight: 900 }}>
+                      {ratedCategoryList} {ratedCategoryListItem}
+                    </span>{" "}
+                    deemed appropriate for this age group.
+                  </p>
+                ) : (
+                  "Oops, sorry this information is missing!"
+                )}
               </div>
             </div>
           ) : (
@@ -77,7 +113,7 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
               </span>{" "}
               rated films.
             </h2>
-            <div class="film-items">
+            <div className="film-items">
               <div className="item">
                 <img
                   src={`https://image.tmdb.org/t/p/original/${filmData[0].poster_path}`}

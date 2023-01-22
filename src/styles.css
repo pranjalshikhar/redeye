@@ -30,6 +30,7 @@ h3,
 h4,
 h5 {
   font-weight: 900;
+  letter-spacing: -0.03em;
 }
 
 .app {
@@ -238,6 +239,7 @@ button svg {
   height: 200px;
   float: left;
   margin-right: 15px;
+  margin-bottom: 0px;
 }
 
 /* extra small devices (phones, 600px and down) */
@@ -288,9 +290,10 @@ button svg {
     justify-content: center;
   }
 
-  .overview-final .ratings-content {
+  .ratings-final .ratings-content {
     flex-direction: row;
     text-align: left;
+    width: 100%;
   }
 
   .ratings-final .ratings-content img {
