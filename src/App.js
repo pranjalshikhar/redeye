@@ -79,7 +79,7 @@ const App = () => {
           <Content />
         ) : (
           <main className="main-wrapper">
-            <div className="w-50 p-2 column landing-left">
+            <div className="p-2 column landing-left">
               <animated.h1 style={noDelay}>Are you a filmmaker?</animated.h1>
               <animated.h2 style={shortDelay}>
                 Get your film rated for free.
@@ -98,7 +98,7 @@ const App = () => {
             </div>
             <animated.div
               style={shortDelay}
-              className="w-50 p-2 circle-bg landing-right"
+              className="p-2 circle-bg landing-right"
             >
               <animated.img
                 src="/img/rmf-export.png"
