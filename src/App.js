@@ -96,9 +96,12 @@ const App = () => {
                 Get Started
               </animated.button>
             </div>
-            <animated.div style={shortDelay} className="w-50 p-2 circle-bg">
+            <animated.div
+              style={shortDelay}
+              className="w-50 p-2 circle-bg landing-right"
+            >
               <animated.img
-                src="/images/rmf-export.png"
+                src="/img/rmf-export.png"
                 style={mediumDelay}
                 className="mockup"
               />

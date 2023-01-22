@@ -181,6 +181,10 @@ Landing Page Wrapper
   justify-content: center;
 }
 
+.landing-right {
+  display: none;
+}
+
 .mockup {
   width: 100%;
 }
@@ -462,6 +466,10 @@ footer p {
 
   .overview-section {
     text-align: left;
+  }
+
+  .landing-right {
+    display: flex;
   }
 
   .overview-item img {
