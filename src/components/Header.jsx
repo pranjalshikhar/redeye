@@ -3,8 +3,8 @@ import React from "react";
 const Header = () => {
   return (
     <header>
-      <nav class="navigation" id="navBar">
-        <a href={"/index.html"} class="active logo">
+      <nav className="navigation" id="navBar">
+        <a href={"/index.html"} className="active logo">
           <img
             src="/images/logo.svg"
             width="200px"
@@ -13,8 +13,8 @@ const Header = () => {
           />
         </a>
         <a
-          href="javascript:void(0);"
-          class="icon"
+          href="#javascript"
+          className="icon"
           onClick={() => {
             var nav = document.getElementById("navBar");
             if (nav.className === "navigation") {
@@ -24,7 +24,7 @@ const Header = () => {
             }
           }}
         >
-          <i class="fa fa-bars"></i>
+          <i className="fa fa-bars"></i>
         </a>
 
         <a href="http://" className="block">
