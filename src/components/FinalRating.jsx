@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
-  const [filmData, setFilmData] = useState({});
-  const filmListURL = process.env.REACT_APP_FILM_LIST_URL;
+  const [filmData, setFilmData] = useState(null);
+  const filmListURL = `https://api.themoviedb.org/3/discover/movie?api_key=ed6d6a1005f39467d292d967980f2f11&certification_country=GB&certification=${ratingsList[finalAgeRating]}&with_original_language=en&sort_by=revenue.desc`;
 
   useEffect(() => {
     const getFilmData = async () => {
@@ -68,6 +68,44 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
       </div>
 
       <div className="app d-flex flex-column">
+        {filmData ? (
+          <div class="film-items">
+            <div className="item">
+              <img
+                src={`https://image.tmdb.org/t/p/original/${filmData[0].poster_path}`}
+              />
+              <h5 className="info-item">
+                {filmData[0].original_title} (
+                {filmData[0].release_date.substr(0, 4)})
+              </h5>
+              <p>{filmData[0].overview.substr(0, 200)}...</p>
+            </div>
+
+            <div className="item">
+              <img
+                src={`https://image.tmdb.org/t/p/original/${filmData[1].poster_path}`}
+              />
+              <h5 className="info-item">
+                {filmData[1].original_title} (
+                {filmData[1].release_date.substr(0, 4)})
+              </h5>
+              <p>{filmData[1].overview.substr(0, 200)}...</p>
+            </div>
+
+            <div className="item">
+              <img
+                src={`https://image.tmdb.org/t/p/original/${filmData[2].poster_path}`}
+              />
+              <h5 className="info-item">
+                {filmData[2].original_title} (
+                {filmData[2].release_date.substr(0, 4)})
+              </h5>
+              <p>{filmData[2].overview.substr(0, 200)}...</p>
+            </div>
+          </div>
+        ) : (
+          "Not rendered"
+        )}
         {/* <h5 className="info-item">{filmData[0].original_title}</h5> */}
         {/* <h5 className="info-item">{filmData.location}</h5>
             <h5 className="info-item">{filmData.blog}</h5>

@@ -4,11 +4,15 @@ const MovieList = () => {
   const [todos, setTodos] = useState();
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_API_URL).then((res) => {
-      const responseTodos = res.data;
-      let todosArray = Object.entries(responseTodos);
-      setTodos(todosArray);
-    });
+    axios
+      .get(
+        "https://api.themoviedb.org/3/movie/550?api_key=ed6d6a1005f39467d292d967980f2f11"
+      )
+      .then((res) => {
+        const responseTodos = res.data;
+        let todosArray = Object.entries(responseTodos);
+        setTodos(todosArray);
+      });
   }, []);
 
   return (
