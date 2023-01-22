@@ -1,20 +1,19 @@
 body {
   margin: 0;
-  font-family: billo, sans-serif;
+  font-family: bilo, sans-serif;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 * {
-  font-family: billo, sans-serif;
+  font-family: bilo, sans-serif;
   font-style: normal;
   color: #2e353a;
 }
 
 body {
-  background-color: rgba(46, 53, 58, 0.05);
+  background-color: rgb(46 53 58 / 05%);
   background-image: url(bg-4.svg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -33,13 +32,17 @@ h5 {
   letter-spacing: -0.03em;
 }
 
+h3 {
+  margin-bottom: 1rem;
+}
+
 .app {
   background-color: #fff;
   min-height: 200px;
   height: min-content;
   border-radius: 15px;
   padding: 25px 30px;
-  box-shadow: 0 0 48px 16px rgba(46, 53, 58, 0.15);
+  box-shadow: 0 0 48px 16px rgb(46 53 58 / 15%);
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 30px;
@@ -57,7 +60,7 @@ h5 {
 }
 
 .header a {
-  color: rgba(46, 53, 58, 0.5);
+  color: rgb(46 53 58 / 50%);
   text-transform: lowercase;
   padding: 0px 10px;
 }
@@ -76,30 +79,20 @@ h5 {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 0px;
 }
 
 .ratings-final .ratings-content img {
   width: 50%;
   margin-right: 0px;
-}
-
-.ratings-final p {
-  font-size: 1.2rem;
-}
-
-.ratings-final img {
-  width: 275px;
-  height: 275px;
-  margin-right: 20px;
-  float: left;
+  margin-bottom: 10px;
 }
 
 .ratings-final h2 {
   margin-bottom: 1rem;
 }
 
-/* question / timer / left-section */
+/* QUESTION/TIMER/LEFT SECTION */
 .question-section {
   width: 100%;
   position: relative;
@@ -110,7 +103,7 @@ h5 {
   display: flex;
   align-items: center;
   margin-left: auto;
-  color: rgba(46, 53, 58, 0.5);
+  color: rgb(46 53 58 / 50%);
 }
 
 /* .question-count span {
@@ -131,12 +124,12 @@ h5 {
   padding: 15px;
   margin-top: 20px;
   margin-right: 20px;
-  border: 5px solid rgb(253, 189, 67);
+  border: 5px solid rgb(255, 189, 67);
   border-radius: 15px;
   text-align: center;
 }
 
-/* answer / right-section */
+/* ANSWERS/RIGHT SECTION */
 .answer-section {
   width: 100%;
   display: flex;
@@ -148,12 +141,13 @@ button {
   width: 100%;
   font-size: 1.1rem;
   color: #2e353a;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgb(0 0 0 / 05%);
   border-radius: 5px;
   display: flex;
   padding: 5px;
   justify-content: flex-start;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  align-items: flex-start;
+  border: 1px solid rgb(0 0 0 / 10%);
   margin: 10px 0px;
   cursor: pointer;
   text-align: left;
@@ -174,8 +168,8 @@ button span img {
 }
 
 button:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgb(0 0 0 / 10%);
+  border: 1px solid rgb(0 0 0 / 10%);
 }
 
 button:focus {
@@ -186,15 +180,15 @@ button svg {
   margin-right: 5px;
 }
 
-/* overview section (bottom) */
+.ratings-final p {
+  font-size: 1.2rem;
+}
+
+/* Overview Section (Bottom) */
 .overview-section {
   display: flex;
   flex-direction: column;
   text-align: center;
-}
-
-.overview-section h3 {
-  margin-bottom: 1rem;
 }
 
 .overview-item-container {
@@ -223,26 +217,37 @@ button svg {
   margin-bottom: 0px;
 }
 
-/* film item */
+/* Film Item */
 .film-items {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .film-items .item {
-  width: 33%;
-  padding: 10px;
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
 }
 
-.film-items .item img {
-  width: 150px;
-  height: 200px;
-  float: left;
-  margin-right: 15px;
+.film-items .item .image {
+  width: 30%;
+  margin-right: 10px;
   margin-bottom: 0px;
 }
 
-/* extra small devices (phones, 600px and down) */
+.film-items .item .image img {
+  width: 100%;
+}
+
+.film-items .item .info {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .app {
     width: 440px;
@@ -257,37 +262,33 @@ button svg {
   }
 }
 
-/* small devices (portrait tablets and large phnes, 600px and up) */
-@media only screen and (min-width: 768px) {
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
   .app {
-    width: 718px;
-  }
-
-  .overview-item img {
-    width: 20%;
+    width: 560px;
   }
 
   .overview-section {
     text-align: left;
   }
 
-  .ratings-final .ratings-content img {
-    width: 25%;
+  .overview-item img {
+    width: 20%;
   }
 }
 
-/* medium devices (landscape tablets, 768px and up) */
+/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .app {
     width: 718px;
   }
 
-  .overview-item {
-    width: 33%;
-  }
-
   .overview-item-container {
     justify-content: center;
+  }
+
+  .overview-item {
+    width: 33%;
   }
 
   .ratings-final .ratings-content {
@@ -298,22 +299,47 @@ button svg {
 
   .ratings-final .ratings-content img {
     width: 25%;
-    margin-right: 12px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+  }
+
+  /* Film Item */
+  .film-items {
+    justify-content: space-around;
+    flex-direction: row;
+  }
+
+  .film-items .item {
+    width: 33%;
+    margin-bottom: 0px;
+  }
+
+  .film-items .item .image {
+    width: 30%;
+  }
+
+  .film-items .item .image img {
+    width: 100%;
+  }
+
+  .film-items .item .info {
+    width: 70%;
+    justify-content: flex-start;
   }
 }
 
-/* large devices (laptops / desktops, 992px and up) */
-@media only screen and (min-width: 1200px) {
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
   .app {
     width: 942px;
   }
 
-  .overview-item {
-    width: 25%;
-  }
-
   .overview-item-container {
     justify-content: flex-start;
+  }
+
+  .overview-item {
+    width: 25%;
   }
 
   .overview-item img {
@@ -321,7 +347,7 @@ button svg {
   }
 }
 
-/* extra large devices (large laptops and desktops, 1200px and up) */
+/* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .app {
     width: 1100px;

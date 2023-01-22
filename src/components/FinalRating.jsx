@@ -26,28 +26,30 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
   const filmListURL = `https://api.themoviedb.org/3/discover/movie?api_key=ed6d6a1005f39467d292d967980f2f11&certification_country=GB&certification=${ratingsList[finalAgeRating]}&with_original_language=en&sort_by=revenue.desc`;
 
   useEffect(() => {
+    const getFilmData = async () => {
+      const response = await fetch(filmListURL);
+      const data = await response.json();
+      setFilmData(data.results);
+    };
+  }, [filmListURL]);
+
+  useEffect(() => {
     search(ratingsList[finalAgeRating], answers);
 
     ratedCategoryList.push(ratedCategories.slice(0, -1).join(", "));
 
     if (ratedCategories.length === 1) {
       ratedCategoryLastItem.push(`${ratedCategories.splice(-1)}`);
+      console.log(`The last item is ${ratedCategoryLastItem}`);
     } else if (ratedCategories.length > 1) {
       ratedCategoryLastItem.push(`and ${ratedCategories.splice(-1)}`);
+      console.log(
+        `There is more than one item and it is ${ratedCategoryLastItem}`
+      );
     } else {
       console.log(`The other condition`);
     }
   }, [ratingsList, finalAgeRating, answers]);
-
-  useEffect(() => {
-    const getFilmData = async () => {
-      const response = await fetch(filmListURL);
-      const data = await response.json();
-      setFilmData(data.results);
-    };
-
-    getFilmData();
-  }, [filmListURL]);
 
   return (
     <>
@@ -77,7 +79,7 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
                     deemed appropriate for an audience of this age.
                   </p>
                 ) : (
-                  "Oops, sorry this information is missing!"
+                  <p>Please while we load your rating information...</p>
                 )}
               </div>
             </div>
@@ -106,13 +108,13 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
       <div className="app d-flex flex-column">
         {filmData ? (
           <>
-            <h2>
+            <h3>
               Other{" "}
               <span style={{ color: ratingColor }}>
                 {ratingsList[finalAgeRating]}
               </span>{" "}
               rated films.
-            </h2>
+            </h3>
             <div className="film-items">
               <div className="item">
                 <img
@@ -149,7 +151,7 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
             </div>
           </>
         ) : (
-          "Not rendered"
+          <p>Please wait...</p>
         )}
         {/* <h5 className="info-item">{filmData[0].original_title}</h5> */}
         {/* <h5 className="info-item">{filmData.location}</h5>

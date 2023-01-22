@@ -210,7 +210,7 @@ const topics = [
       },
       {
         answerText:
-          "Strong threat and horror feature regularly, and sadistic threat features is more prolonged.",
+          "Strong threat and horror feature regularly, and sadistic threat is more prolonged.",
         ageRating: "18",
       },
     ],
