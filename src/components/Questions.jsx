@@ -32,7 +32,7 @@ const Questions = ({
               <span className="d-flex align-items-center">
                 <img
                   src={`/images/circle-${answerOption.ageRating}.svg`}
-                  alt=""
+                  alt="Bullet point"
                 />
                 {answerOption.answerText}
               </span>

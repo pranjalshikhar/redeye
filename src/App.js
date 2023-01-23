@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { animated, config, useSpring } from "react-spring";
-import { Content, Footer, Header } from "./components";
+import { About, Content, Footer, Header, Home } from "./components";
+import { Route, Routes } from "react-router-dom";
 
 const App = () => {
   // Background Scroll Function
@@ -66,6 +67,11 @@ const App = () => {
       </div>
       <div className="site-wrapper">
         <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+
         {showContent ? (
           <Content />
         ) : (
