@@ -3,7 +3,7 @@ const About = () => {
     <main className="about-wrapper">
       <div className="about-section">
         <div>
-          <h3>About</h3>
+          <h1>About</h1>
           <p className="lead-in-text">
             Rate My Film was built in April 2021 by web developer and filmmaking
             teacher Daniel Cranney as a way to help student, amateur, no-budget
