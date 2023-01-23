@@ -64,7 +64,7 @@ const Home = () => {
 
           <animated.div style={shortDelay} className="circle-bg landing-right">
             <animated.img
-              src="/img/rmf-export.png"
+              src="/images/rmf-export.png"
               style={mediumDelay}
               className="mockup"
             />

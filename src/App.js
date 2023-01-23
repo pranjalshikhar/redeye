@@ -71,40 +71,6 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
         </Routes>
-
-        {showContent ? (
-          <Content />
-        ) : (
-          <main className="main-wrapper">
-            <div className="column landing-left">
-              <animated.h1 style={noDelay}>Know your audience</animated.h1>
-              <animated.h2 style={shortDelay}>
-                Get a BBFC rating for free.
-              </animated.h2>
-              <animated.p style={mediumDelay}>
-                Find out how the British Board of Film Classification would
-                (probably) rate your film.
-              </animated.p>
-              <animated.button
-                onClick={() => setShowContent(true)}
-                style={longDelay}
-                className="start-button"
-              >
-                Get Started
-              </animated.button>
-            </div>
-            <animated.div
-              style={shortDelay}
-              className="circle-bg landing-right"
-            >
-              <animated.img
-                src="/images/rmf-export.png"
-                style={mediumDelay}
-                className="mockup"
-              />
-            </animated.div>
-          </main>
-        )}
         <Footer />
       </div>
     </>
