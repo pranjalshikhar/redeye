@@ -1,8 +1,8 @@
-const Questions = ({ topics, handleAnswerOptionClick, currentTopic }) => {
+const Questions = ({ topics, handleAnswerOptionClick, i, currentTopic }) => {
   return (
     <>
-      {topics.map((topic, index) => (
-        <div className="wrapper column" key={index}>
+      {topics.map((card, index) => (
+        <div className="wrapper column">
           <div className="question-section">
             <div className="question-title">
               <h2>{topics[currentTopic].categoryTitle}</h2>
@@ -15,8 +15,8 @@ const Questions = ({ topics, handleAnswerOptionClick, currentTopic }) => {
             </div>
           </div>
           <div className="answer-section d-flex">
-            {topics[currentTopic].answerOptions.map((answerOption, i) => (
-              <div className="answer-item" key={i}>
+            {topics[currentTopic].answerOptions.map((answerOption) => (
+              <div className="answer-item">
                 <button
                   onClick={() =>
                     handleAnswerOptionClick(
