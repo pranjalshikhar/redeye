@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from "../images/logo.svg";
 
 const Header = () => {
   const Mailto = ({ email, subject = "", body = "", children }) => {
@@ -17,12 +18,7 @@ const Header = () => {
     <header>
       <nav className="navigation" id="navBar">
         <Link to="/" className="active logo">
-          <img
-            src="/images/logo_icon.svg"
-            width="50px"
-            height="50px"
-            alt="Temporary Logo"
-          />
+          <Logo />
           Rate My Film
         </Link>
         <a

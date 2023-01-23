@@ -1,9 +1,4 @@
-const Questions = ({
-  topics,
-  handleAnswerOptionClick,
-  currentTopic,
-  setCurrentTopic,
-}) => {
+const Questions = ({ topics, handleAnswerOptionClick, currentTopic }) => {
   return (
     <div className="wrapper column">
       <div className="question-section">
@@ -30,10 +25,9 @@ const Questions = ({
               key={i++}
             >
               <span className="d-flex align-items-center">
-                <img
-                  src={`/images/circle-${answerOption.ageRating}.svg`}
-                  alt="Bullet point"
-                />
+                <svg height="20" width="20">
+                  <circle cx="10" cy="10" r="8" fill="red" />
+                </svg>
                 {answerOption.answerText}
               </span>
             </button>
