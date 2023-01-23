@@ -44,9 +44,6 @@ const Header = () => {
         <Link to="/about" className="block">
           About
         </Link>
-        <a href="http://" className="block">
-          Donate
-        </a>
         <a
           href="https://www.bbfc.co.uk/"
           target="_blank"
