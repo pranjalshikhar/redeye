@@ -12,13 +12,6 @@ const Home = () => {
     delay: 100,
   });
 
-  const shortDelay = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
-    config: config.slow,
-    delay: 500,
-  });
-
   const mediumDelay = useSpring({
     opacity: 1,
     from: { opacity: 0 },
