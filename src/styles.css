@@ -511,7 +511,8 @@ SMARTPHONES (LANDSCAPE) OVER 321px
   ANIMATED BACKGROUND
   */
   #background-container {
-    display: none;
+    background-image: url(minimal-bg.png);
+    background-size: cover;
   }
 
   /*
