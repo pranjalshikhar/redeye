@@ -40,17 +40,16 @@ const Home = () => {
       {showContent ? (
         <Content />
       ) : (
-        <main className="main-wrapper">
+        <main className="main-wrapper landing-bg">
           <div className="column landing-left">
+            <animated.h5 style={noDelay}>CALLING ALL FILMMAKERS</animated.h5>
             <animated.h1 style={noDelay}>Know your audience</animated.h1>
-
-            <animated.h2 style={shortDelay}>
+            {/* <animated.h2 style={shortDelay}>
               Get a BBFC rating for free.
-            </animated.h2>
-
+            </animated.h2> */}
             <animated.p style={mediumDelay}>
-              Find out how the British Board of Film Classification would
-              (probably) rate your film.
+              In just a few clicks you can get a free age rating for your film,
+              using data provided by the British Board of Film Classification.
             </animated.p>
 
             <animated.button
@@ -61,14 +60,6 @@ const Home = () => {
               Get Started
             </animated.button>
           </div>
-
-          <animated.div style={shortDelay} className="circle-bg landing-right">
-            <animated.img
-              src="/images/rmf-export.png"
-              style={mediumDelay}
-              className="mockup"
-            />
-          </animated.div>
         </main>
       )}
     </>

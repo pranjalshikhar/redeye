@@ -16,13 +16,14 @@ const Header = () => {
   return (
     <header>
       <nav className="navigation" id="navBar">
-        <Link href={"/index.html"} className="active logo">
+        <Link to="/" className="active logo">
           <img
-            src="/images/logo.svg"
-            width="200px"
-            height="71px"
+            src="/images/logo_icon.svg"
+            width="50px"
+            height="50px"
             alt="Temporary Logo"
           />
+          Rate My Film
         </Link>
         <a
           href="index.html"
@@ -40,7 +41,7 @@ const Header = () => {
           <i className="fa fa-bars"></i>
         </a>
 
-        <Link href="/about" className="block">
+        <Link to="/about" className="block">
           About
         </Link>
         <a href="http://" className="block">
