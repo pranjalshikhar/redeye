@@ -13,9 +13,10 @@ const Header = () => {
           />
         </a>
         <a
-          href="#javascript"
+          href="index.html"
           className="icon"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             var nav = document.getElementById("navBar");
             if (nav.className === "navigation") {
               nav.className += " responsive";
