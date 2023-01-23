@@ -303,11 +303,11 @@ const Content = () => {
       setShowRating(true);
     }
 
-    setSiteBackgroundImage(
-      (document.body.style.backgroundImage = `url(${
-        backgroundImages[answers.length]
-      })`)
-    );
+    // setSiteBackgroundImage(
+    //   (document.body.style.backgroundImage = `url(${
+    //     backgroundImages[answers.length]
+    //   })`)
+    // );
 
     if (finalAgeRating < ratingRank) {
       setFinalAgeRating(ratingRank);
