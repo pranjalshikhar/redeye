@@ -29,15 +29,18 @@ const Home = () => {
       {showContent ? (
         <Content />
       ) : (
-        <main className="main-wrapper landing-bg">
-          <div className="column landing-left">
-            <animated.h5 style={noDelay}>CALLING ALL FILMMAKERS!</animated.h5>
+        <main className="main-wrapper">
+          <div className="intro column">
+            <animated.h5 style={noDelay}>Are you a filmmaker?</animated.h5>
             <animated.h1 style={noDelay}>
               Get to know your audience.
             </animated.h1>
+            <animated.h1 style={noDelay}>
+              Find out who your film is suitable for.
+            </animated.h1>
             <animated.p style={mediumDelay}>
-              Learn more about who your film might be suitable for, in just a
-              few clicks.
+              In just a few clicks you can learn a whole lot more about who your
+              film might be suitable for.
             </animated.p>
             <animated.button
               onClick={() => setShowContent(true)}

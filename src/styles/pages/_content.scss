@@ -1,0 +1,92 @@
+.form-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  .w-70 {
+    z-index: 5;
+    @include contentBox;
+    margin: 10px 0px 0px 0px;
+    height: 874px;
+
+    @media screen and (min-width: 320px) {
+      height: 836px;
+    }
+
+    @media screen and (min-width: 480px) {
+      height: 687px;
+    }
+
+    @media screen and (min-width: 768px) {
+    }
+
+    @media screen and (min-width: 900px) {
+      height: 668px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      height: 630px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      height: 565px;
+    }
+  }
+
+  .w-30 {
+    @include contentBox;
+    margin: 10px 0px 0px 0px;
+    z-index: 10;
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+      width: 30%;
+    }
+
+    h2 {
+      color: $backgroundColor;
+    }
+
+    .pagination {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+
+      h2 {
+        margin: 0 0 0.5em 0;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0;
+
+        li {
+          position: relative;
+          margin-left: 0px;
+        }
+      }
+
+      .item {
+        width: 100%;
+        height: auto;
+        background-color: $lightBackgroundColor;
+        border: 0px;
+        text-align: left;
+        text-transform: none;
+        letter-spacing: normal;
+        padding: 13px 8px;
+        margin: 5px 0px;
+        border-radius: 8px;
+        color: $bodyColor;
+        font-weight: 400;
+      }
+    }
+  }
+}

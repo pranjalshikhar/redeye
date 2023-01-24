@@ -1,0 +1,55 @@
+/* --------------------
+  FOOTER
+  -------------------- */
+
+footer {
+  @include flexRow;
+  width: 100%;
+  align-items: center;
+  min-height: 52px;
+  overflow: auto;
+  padding: 40px 0px;
+
+  .inner-wrapper {
+    @include flexCol;
+    width: 90%;
+    align-items: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .logo {
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
+    align-items: center;
+    margin-bottom: 15px;
+    filter: grayscale(100%);
+    opacity: 0.5;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    a {
+      color: $headerColor;
+      font-family: $headerFont;
+      font-weight: 600;
+      font-size: 1.4rem;
+      text-decoration: none;
+      opacity: 0.8;
+      margin-left: 8px;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 10px; /* Overriding browser standard */
+    margin-top: 10px;
+  }
+}

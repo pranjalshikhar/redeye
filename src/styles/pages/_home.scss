@@ -1,0 +1,28 @@
+/* --------------------
+HOME
+-------------------- */
+.intro {
+  .sublead {
+    margin: 0.25em 0 0 0;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: $brandColor;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: $bodyColor;
+    line-height: 1.6em;
+    margin-bottom: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+.intro-bg {
+  background-image: url("/src/images/bg-image.jpg");
+  background-size: cover;
+}
+
+.w-50 {
+  width: 50%;
+}

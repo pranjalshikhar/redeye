@@ -1,0 +1,101 @@
+/* --------------------
+  FINAL RATING SECTION
+  -------------------- */
+
+.content-box {
+  @include contentBox;
+}
+
+.rating-section {
+  @include flexCol;
+  align-items: center;
+  text-align: left;
+  margin-bottom: 0px;
+
+  .icon {
+    width: 100%;
+    display: none;
+    margin-right: 1.5rem;
+  }
+
+  .title {
+    width: 100%;
+
+    h2 {
+      color: $backgroundColor;
+
+      span {
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+/* --------------------
+SIMILAR FILMS SECTION
+-------------------- */
+.other-films-section {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+
+  h2 {
+    color: $backgroundColor;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    @media only screen and (min-width: 768px) {
+      flex-direction: row;
+    }
+
+    .item {
+      width: 100%;
+      display: flex;
+      margin-bottom: 10px;
+      align-items: flex-start;
+
+      @media only screen and (min-width: 768px) {
+        width: 50%;
+      }
+
+      @media only screen and (min-width: 1024px) {
+        width: 33%;
+      }
+
+      .image {
+        width: 30%;
+        margin-right: 10px;
+        margin-bottom: 0px;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .info {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        margin-right: 10px;
+
+        h4 {
+          margin: 0;
+        }
+
+        p {
+          margin: 0.25em 0;
+        }
+      }
+    }
+  }
+}

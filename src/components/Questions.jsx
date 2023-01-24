@@ -11,7 +11,13 @@ function determineClasses(indexes, cardIndex) {
   return "inactive";
 }
 
-const Questions = ({ topics, handleAnswerOptionClick, i, currentTopic }) => {
+const Questions = ({
+  topics,
+  handleAnswerOptionClick,
+  i,
+  currentTopic,
+  setCurrentTopic,
+}) => {
   const [indexes, setIndexes] = useState({
     previousIndex: 0,
     currentIndex: 0,
@@ -41,60 +47,54 @@ const Questions = ({ topics, handleAnswerOptionClick, i, currentTopic }) => {
 
   return (
     <>
-      <ul className="topic-card-carousel">
-        {topics.map((topic, index) => (
-          <li
-            key={topic.id}
-            className={`topic-card ${determineClasses(indexes, index)}`}
-            // onClick={}
-          >
-            <div
-              className="question-section"
-              style={{ borderColor: topic.color }}
+      <main className="questions-wrapper">
+        <ul className="card-carousel">
+          {topics.map((topic, index) => (
+            <li
+              key={topic.id}
+              className={`card ${determineClasses(indexes, index)}`}
             >
               <div
-                className="question-icon"
-                style={{ backgroundColor: topic.color }}
+                className="question-section"
+                style={{ borderColor: topic.color }}
               >
-                {topic.icon}
-              </div>
-              <div className="question-title">
-                <h2>{topic.categoryTitle}</h2>
-                <div className="question-count">
-                  Step {topic.id + 1} of {topics.length}
+                <div className="icon" style={{ backgroundColor: topic.color }}>
+                  {topic.icon}
+                </div>
+                <div className="title">
+                  <h2>{topic.categoryTitle}</h2>
+                  <div className="count">
+                    Step {topic.id + 1} of {topics.length}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div>
-              <p className="question-description">
-                {topic.categoryDescription}
-              </p>
-            </div>
+              <div>
+                <p className="description">{topic.categoryDescription}</p>
+              </div>
 
-            <div className="answer-section d-flex">
-              {topic.answerOptions.map((answerOption) => (
-                <div className="answer-item">
-                  <button
-                    onClick={() => {
-                      handleAnswerOptionClick(
-                        answerOption.ageRating,
-                        topic.categoryTitle
-                      );
-                      handleCardTransition();
-                    }}
-                    key={i++}
-                  >
-                    <span className="d-flex align-items-center">
+              <div className="answer-section">
+                {topic.answerOptions.map((answerOption, index) => (
+                  <div className="item" key={index}>
+                    <button
+                      onClick={() => {
+                        handleAnswerOptionClick(
+                          answerOption.ageRating,
+                          topic.categoryTitle
+                        );
+                        handleCardTransition();
+                      }}
+                      key={i++}
+                    >
                       {answerOption.answerText}
-                    </span>
-                  </button>
-                </div>
-              ))}
-            </div>
-          </li>
-        ))}
-      </ul>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </main>
     </>
   );
 };

@@ -117,7 +117,7 @@ const topics = [
     id: 3,
     icon: <LnaguageIcon fil="#fff" />,
     color: "#0cd68a",
-    categoryTitle: "Language",
+    categoryTitle: "Bad Language",
     categoryDescription:
       "Please select the option that best describes how bad language features in your film:",
     answerOptions: [
