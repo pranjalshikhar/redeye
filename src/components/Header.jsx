@@ -18,7 +18,7 @@ const Header = () => {
     <header>
       <div className="inner-wrapper">
         <div className="logo">
-          <Logo />
+          <Logo width={50} height={50} />
           <Link to="/" className="active">
             Rate My Film
           </Link>
