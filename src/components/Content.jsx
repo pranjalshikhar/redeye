@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ReactComponent as DangerIcon } from "../images/danger-icon.svg";
 import { ReactComponent as DiscriminationIcon } from "../images/discrimination-icon.svg";
 import { ReactComponent as DrugsIcon } from "../images/drugs-icon.svg";
-import { ReactComponent as LnaguageIcon } from "../images/language-icon.svg";
+import { ReactComponent as LanguageIcon } from "../images/language-icon.svg";
 import { ReactComponent as SexNudityIcon } from "../images/sex-nudity-icon.svg";
 import { ReactComponent as ThreatHorrorIcon } from "../images/threat-horror-icon.svg";
 import { ReactComponent as ViolenceIcon } from "../images/violence-icon.svg";
@@ -314,8 +314,10 @@ const Content = () => {
           <div className="w-30">
             <div className="pagination">
               <h2>Topics</h2>
-              {topics.map((topic) => (
-                <button className="item">{topic.categoryTitle}</button>
+              {topics.map((topic, index) => (
+                <button className="item" key={index}>
+                  {topic.categoryTitle}
+                </button>
               ))}
             </div>
           </div>
