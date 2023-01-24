@@ -13,7 +13,7 @@ const topics = [
   {
     id: 0,
     icon: <DangerIcon fill="#fff" />,
-    color: "#6102d2",
+    color: "#c940ea",
     categoryTitle: "Dangerous Behaviour",
     categoryDescription:
       "Please select the option that best describes how dangerous behaviour features in your film:",
@@ -49,7 +49,7 @@ const topics = [
   {
     id: 1,
     icon: <DiscriminationIcon fil="#fff" />,
-    color: "#fe346e",
+    color: "#ff5f99",
     categoryTitle: "Discrimination",
     categoryDescription:
       "Please select the option that best describes how discrimination features in your film:",
@@ -84,7 +84,7 @@ const topics = [
   {
     id: 2,
     icon: <DrugsIcon fil="#fff" />,
-    color: "#fcdb00",
+    color: "#ff9057",
     categoryTitle: "Drugs",
     categoryDescription:
       "Please select the option that best describes how drugs feature in your film:",
@@ -116,7 +116,7 @@ const topics = [
   {
     id: 3,
     icon: <LnaguageIcon fil="#fff" />,
-    color: "#0cd68a",
+    color: "#febd35",
     categoryTitle: "Bad Language",
     categoryDescription:
       "Please select the option that best describes how bad language features in your film:",
@@ -150,7 +150,7 @@ const topics = [
   {
     id: 4,
     icon: <SexNudityIcon fil="#fff" />,
-    color: "#2238af",
+    color: "#3598fe",
     categoryTitle: "Sex and Nudity",
     categoryDescription:
       "Please select the option that best describes how sex or nudity feature in your film:",
@@ -185,7 +185,7 @@ const topics = [
   {
     id: 5,
     icon: <ThreatHorrorIcon fil="#fff" />,
-    color: "#fe346e",
+    color: "#c940ea",
     categoryTitle: "Threat and Horror",
     categoryDescription:
       "Please select the option that best describes how threat or horror feature in your film:",
@@ -221,7 +221,7 @@ const topics = [
   {
     id: 6,
     icon: <ViolenceIcon fil="#fff" />,
-    color: "#6102d2",
+    color: "#ff5f99",
     categoryTitle: "Violence",
     categoryDescription:
       "Please select the option that best describes how violence features in your film:",
