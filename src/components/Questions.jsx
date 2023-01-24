@@ -115,6 +115,7 @@ const Questions = ({
                   <Link to="/" className="block">
                     <button
                       onClick={() => {
+                        handleBackCardTransition();
                         setShowContent(false);
                       }}
                     >

@@ -1,7 +1,18 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../images/logo.svg";
 
 const Header = () => {
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const handleToggle = () => {
+    setNavbarOpen(!navbarOpen);
+  };
+
+  const closeMenu = () => {
+    setNavbarOpen(false);
+  };
+
   const Mailto = ({ email, subject = "", body = "", children }) => {
     let params = subject || body ? "?" : "";
     if (subject) params += `subject=${encodeURIComponent(subject)}`;
@@ -17,44 +28,50 @@ const Header = () => {
   return (
     <header>
       <div className="inner-wrapper">
-        <div className="logo">
-          <Logo width={50} height={50} />
-          <Link to="/" className="active">
-            Rate My Film
-          </Link>
-        </div>
-        <nav className="navigation" id="navBar">
-          <a
-            href="index.html"
-            className="icon"
-            onClick={(e) => {
-              e.preventDefault();
-              var nav = document.getElementById("navBar");
-              if (nav.className === "navigation") {
-                nav.className += " responsive";
-              } else {
-                nav.className = "navigation";
-              }
-            }}
-          >
-            <i className="fa fa-bars"></i>
-          </a>
+        <div className="top-row">
+          <div className="logo">
+            <Logo width={50} height={50} />
+            <Link to="/" className="active">
+              Rate My Film
+            </Link>
+          </div>
 
-          <Link to="/" className="block">
-            Home
+          <button onClick={handleToggle}>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke={navbarOpen ? "#ffffff" : "#a6aabb"}
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
+          <Link to={"/"} onClick={() => closeMenu()} exact>
+            <a className="link">Home</a>
           </Link>
-          <Link to="/about" className="block">
-            About
+
+          <Link to={"/about"} onClick={() => closeMenu()} exact>
+            <a className="link">About</a>
           </Link>
 
           <Mailto
             email="danieljamescranney@gmail.com"
             subject="Rate my Film"
             body="Hi!"
+            onClick={() => closeMenu()}
           >
-            Contact
+            <a className="link">Contact</a>
           </Mailto>
-        </nav>
+        </div>
       </div>
     </header>
   );

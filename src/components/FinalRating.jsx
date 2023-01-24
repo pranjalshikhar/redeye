@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Film from "./Film";
+import { ShowContentContext } from "./Home";
 
 let ratedCategories = [];
 let ratedCategoryList = [];
@@ -23,7 +24,7 @@ const ratingDescription = {
 };
 
 const FinalRating = ({ finalAgeRating, ratingColor, answers }) => {
-  // console.log(answers)
+  const { setShowContent } = useContext(ShowContentContext);
 
   const [filmData, setFilmData] = useState(null);
 
@@ -141,8 +142,7 @@ const FinalRating = ({ finalAgeRating, ratingColor, answers }) => {
         <div className="start-again">
           <button
             onClick={(e) => {
-              e.preventDefault();
-              window.location.reload();
+              setShowContent(false);
             }}
             className="start-button"
           >
