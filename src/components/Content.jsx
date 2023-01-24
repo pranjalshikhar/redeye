@@ -35,7 +35,7 @@ const topics = [
       },
       {
         answerText:
-          "Dangerous behaviour (for example, suicide, self-harming and asphyxiation) feature but with little detail, so they cannot be copied. Weapons are featured but are contextually appropriate.",
+          "Dangerous behaviour (for example, suicide or the use of weapons) features but without detail.",
         ageRating: "15",
       },
       {
@@ -60,7 +60,7 @@ const topics = [
       },
       {
         answerText:
-          "It features a small amount but is disapproved of is contextually appropriate.",
+          "It features a small amount but is disapproved of and is contextually appropriate.",
         ageRating: "PG",
       },
       {

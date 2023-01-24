@@ -39,8 +39,8 @@ const Home = () => {
               Find out who your film is suitable for.
             </animated.h1>
             <animated.p style={mediumDelay}>
-              In just a few clicks you can learn a whole lot more about who your
-              film might be suitable for.
+              In just a few clicks, you can learn more about who your film might
+              be suitable for.
             </animated.p>
             <animated.button
               onClick={() => setShowContent(true)}
