@@ -1,15 +1,6 @@
-import React, { useCallback, useState } from "react";
-
-function determineClasses(indexes, cardIndex) {
-  if (indexes.currentIndex === cardIndex) {
-    return "active";
-  } else if (indexes.nextIndex === cardIndex) {
-    return "next";
-  } else if (indexes.previousIndex === cardIndex) {
-    return "prev";
-  }
-  return "inactive";
-}
+import React, { useCallback, useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { ShowContentContext } from "./Home";
 
 const Questions = ({
   topics,
@@ -19,12 +10,28 @@ const Questions = ({
   setCurrentTopic,
   answers,
 }) => {
+  const { setShowContent } = useContext(ShowContentContext);
+
+  // Determine classes when cards are clicked
+  function determineClasses(indexes, cardIndex) {
+    if (indexes.currentIndex === cardIndex) {
+      return "active";
+    } else if (indexes.nextIndex === cardIndex) {
+      return "next";
+    } else if (indexes.previousIndex === cardIndex) {
+      return "prev";
+    }
+    return "inactive";
+  }
+
+  // Index useState defaults
   const [indexes, setIndexes] = useState({
     previousIndex: 0,
     currentIndex: 0,
     nextIndex: 1,
   });
 
+  // Function to handle card transition
   const handleCardTransition = useCallback(() => {
     // If we've reached the end, start again from the first card,
     // but carry previous value over
@@ -46,12 +53,13 @@ const Questions = ({
     }
   }, [indexes.currentIndex, topics.length]);
 
+  // Function to back a card transition
   const handleBackCardTransition = useCallback(() => {
     // Remove last item from answers list
     answers.pop();
+
     // If we've reached the end, start again from the first card,
-    // but carry previous value over
-    if (indexes.currentIndex >= topics.length - 1) {
+    if (indexes.currentIndex >= topics.length + 1) {
       setIndexes({
         previousIndex: topics.length - 1,
         currentIndex: 0,
@@ -71,16 +79,6 @@ const Questions = ({
 
   return (
     <>
-      <div>
-        <button
-          onClick={() => {
-            setCurrentTopic(currentTopic - 1);
-            handleBackCardTransition();
-          }}
-        >
-          Back
-        </button>
-      </div>
       <div className="questions-wrapper">
         <ul className="card-carousel">
           {topics.map((topic, index) => (
@@ -88,6 +86,57 @@ const Questions = ({
               key={topic.id}
               className={`card ${determineClasses(indexes, index)}`}
             >
+              {currentTopic !== 0 ? (
+                <div className="back-button">
+                  <button
+                    onClick={() => {
+                      setCurrentTopic(currentTopic - 1);
+                      handleBackCardTransition();
+                    }}
+                  >
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                      />
+                    </svg>
+                    Back
+                  </button>
+                </div>
+              ) : (
+                <div className="back-button">
+                  <Link to="/" className="block">
+                    <button
+                      onClick={() => {
+                        setShowContent(false);
+                      }}
+                    >
+                      <svg
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                        />
+                      </svg>
+                      Back
+                    </button>
+                  </Link>
+                </div>
+              )}
+
               <div className="question-section">
                 <div className="icon" style={{ backgroundColor: topic.color }}>
                   {topic.icon}
@@ -105,8 +154,8 @@ const Questions = ({
               </div>
 
               <div className="answer-section">
-                {topic.answerOptions.map((answerOption, index) => (
-                  <div className="item" key={index}>
+                {topic.answerOptions.map((answerOption) => (
+                  <div className="item" key={i++}>
                     <button
                       onClick={() => {
                         handleAnswerOptionClick(
@@ -115,7 +164,6 @@ const Questions = ({
                         );
                         handleCardTransition();
                       }}
-                      key={i++}
                     >
                       {answerOption.answerText}
                     </button>

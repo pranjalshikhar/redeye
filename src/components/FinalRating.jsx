@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Film from "./Film";
 
 let ratedCategories = [];
 let ratedCategoryList = [];
 let ratedCategoryLastItem = [];
 
-function search(objectItem, answersArray) {
-  for (var i = 0; i < answersArray.length; i++) {
-    if (answersArray[i].categoryRating === objectItem) {
-      ratedCategories.push(answersArray[i].categoryTitle.toLowerCase());
+function search(objItem, array) {
+  for (var i = 0; i < array.length; i++) {
+    // console.log(array[i]);
+    if (array[i].categoryRating === objItem) {
+      ratedCategories.push(array[i].categoryTitle.toLowerCase());
     }
   }
 }
@@ -21,23 +22,15 @@ const ratingDescription = {
   18: `Films like yours are unsuitable for anyone that is under the age of 18, and should only be viewed by adults. These kinds of films contain more extreme content or themes.`,
 };
 
-const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
+const FinalRating = ({ finalAgeRating, ratingColor, answers }) => {
+  // console.log(answers)
+
   const [filmData, setFilmData] = useState(null);
 
-  const filmListUrl = `https://api.themoviedb.org/3/discover/movie?api_key=8af1272c35921dca7a2a0cba4b65f165&certification_country=GB&certification=${ratingsList[finalAgeRating]}&with_original_language=en&sort_by=revenue.desc`;
-
   useEffect(() => {
-    const getFilmData = async () => {
-      const response = await fetch(filmListUrl);
-      const jsonData = await response.json();
-      setFilmData(jsonData.results);
-    };
+    // console.log(finalAgeRating);
 
-    getFilmData();
-  }, [filmListUrl]);
-
-  useEffect(() => {
-    search(ratingsList[finalAgeRating], answers);
+    search(finalAgeRating, answers);
 
     ratedCategoryList.push(ratedCategories.slice(0, -1).join(", "));
 
@@ -48,96 +41,114 @@ const FinalRating = ({ finalAgeRating, ratingColor, ratingsList, answers }) => {
     } else {
       console.log(`No conditions have been met`);
     }
-  }, [ratingsList, finalAgeRating, answers]);
+  });
+
+  useEffect(() => {
+    let filmListUrl = `https://api.themoviedb.org/3/discover/movie?api_key=8af1272c35921dca7a2a0cba4b65f165&certification_country=GB&certification=${finalAgeRating}&with_original_language=en&sort_by=revenue.desc`;
+    // console.log(filmListUrl)
+
+    const getFilmData = async () => {
+      const response = await fetch(filmListUrl);
+      const jsonData = await response.json();
+      setFilmData(jsonData.results);
+    };
+
+    getFilmData();
+  }, [finalAgeRating]);
 
   return (
-    <main className="main-wrapper column">
-      <div className="content-box column">
-        <div className="rating-section">
-          {finalAgeRating || finalAgeRating === 0 ? (
-            <>
-              <div className="title">
+    <main className="rating-wrapper column">
+      <div className="inner-wrapper column">
+        <div className="content-box column">
+          <div className="rating-section">
+            {finalAgeRating || finalAgeRating === 0 ? (
+              <>
+                <div className="title">
+                  <h2>
+                    Your film is suitable for{" "}
+                    <span style={{ color: ratingColor }}>
+                      {finalAgeRating === "U"
+                        ? "people of any age"
+                        : finalAgeRating === "PG"
+                        ? "children"
+                        : finalAgeRating === "12"
+                        ? "older children"
+                        : finalAgeRating === "15"
+                        ? "teenagers"
+                        : finalAgeRating === "18"
+                        ? "adults"
+                        : null}
+                    </span>
+                  </h2>
+                  <p>{ratingDescription[`${finalAgeRating}`]}</p>
+
+                  {ratedCategoryList.length !== 0 ? (
+                    <p>
+                      Your film has been rated this way because it features{" "}
+                      <span style={{ color: ratingColor, fontWeight: 600 }}>
+                        {ratedCategoryList} {ratedCategoryLastItem}
+                      </span>{" "}
+                      deemed appropriate for this audience.
+                    </p>
+                  ) : (
+                    <p>Please while we load your rating information...</p>
+                  )}
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
+
+        <div className="content-box">
+          <div className="other-films-section">
+            {filmData ? (
+              <>
                 <h2>
-                  Your film is suitable for{" "}
+                  Other films suitable for{" "}
                   <span style={{ color: ratingColor }}>
-                    {ratingsList[finalAgeRating] === "U"
+                    {finalAgeRating === "U"
                       ? "people of any age"
-                      : ratingsList[finalAgeRating] === "PG"
+                      : finalAgeRating === "PG"
                       ? "children"
-                      : ratingsList[finalAgeRating] === "12"
+                      : finalAgeRating === "12"
                       ? "older children"
-                      : ratingsList[finalAgeRating] === "15"
+                      : finalAgeRating === "15"
                       ? "teenagers"
-                      : ratingsList[finalAgeRating] === "18"
+                      : finalAgeRating === "18"
                       ? "adults"
                       : null}
                   </span>
-                  .
                 </h2>
-                <p>{ratingDescription[`${ratingsList[finalAgeRating]}`]}</p>
 
-                {ratedCategoryList.length !== 0 ? (
-                  <p>
-                    Your film has been rated this way because it features{" "}
-                    <span style={{ color: ratingColor, fontWeight: 600 }}>
-                      {ratedCategoryList} {ratedCategoryLastItem}
-                    </span>{" "}
-                    deemed appropriate for this audience.
-                  </p>
-                ) : (
-                  <p>Please while we load your rating information...</p>
-                )}
-              </div>
-            </>
-          ) : (
-            <></>
-          )}
+                <div className="items">
+                  {filmData.slice(0, 6).map((film, index) => (
+                    <Film
+                      key={`${index}-${film.original_title}`}
+                      film={film}
+                      ratingColor={ratingColor}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <p>Please wait...</p>
+            )}
+          </div>
         </div>
-      </div>
 
-      <div className="content-box">
-        <div className="other-films-section">
-          {filmData ? (
-            <>
-              <h2>
-                Other films suitable for{" "}
-                <span style={{ color: ratingColor }}>
-                  {ratingsList[finalAgeRating] === "U"
-                    ? "people of any age"
-                    : ratingsList[finalAgeRating] === "PG"
-                    ? "children when watching with adults"
-                    : ratingsList[finalAgeRating] === "12"
-                    ? "older children"
-                    : ratingsList[finalAgeRating] === "15"
-                    ? "teenagers"
-                    : ratingsList[finalAgeRating] === "18"
-                    ? "adults"
-                    : null}
-                </span>
-              </h2>
-
-              <div className="items">
-                {filmData.slice(0, 6).map((film, index) => (
-                  <Film key={`${index}-${film.original_title}`} film={film} />
-                ))}
-              </div>
-            </>
-          ) : (
-            <p>Please wait...</p>
-          )}
+        <div className="start-again">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.reload();
+            }}
+            className="start-button"
+          >
+            Start Again
+          </button>
         </div>
-      </div>
-
-      <div className="content-box column start-again">
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            window.location.reload();
-          }}
-          className="start-button"
-        >
-          Start Again
-        </button>
       </div>
     </main>
   );

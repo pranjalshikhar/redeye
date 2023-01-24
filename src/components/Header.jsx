@@ -40,9 +40,13 @@ const Header = () => {
             <i className="fa fa-bars"></i>
           </a>
 
-          {/* <Link to="/" className="block">
+          <Link to="/" className="block">
             Home
-          </Link> */}
+          </Link>
+          <Link to="/about" className="block">
+            About
+          </Link>
+
           <Mailto
             email="danieljamescranney@gmail.com"
             subject="Rate my Film"

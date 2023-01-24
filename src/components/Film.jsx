@@ -1,5 +1,4 @@
 const Film = ({ film, ratingColor }) => {
-  console.log(film);
   return (
     <div className="item">
       <div className="image">
