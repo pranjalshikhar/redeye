@@ -61,16 +61,6 @@ const Header = () => {
           <Link to="/about" onClick={() => closeMenu()} className="link">
             About
           </Link>
-          <Mailto
-            email="danieljamescranney@gmail.com"
-            subject="Rate my Film"
-            body="Hi!"
-            onClick={() => closeMenu()}
-          >
-            <a href="/#" className="link">
-              Contact
-            </a>
-          </Mailto>
         </div>
       </div>
     </header>
