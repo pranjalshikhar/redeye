@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
+import { ReactComponent as DangerIcon } from "../images/danger-icon.svg";
+import { ReactComponent as DiscriminationIcon } from "../images/discrimination-icon.svg";
+import { ReactComponent as DrugsIcon } from "../images/drugs-icon.svg";
+import { ReactComponent as LnaguageIcon } from "../images/language-icon.svg";
+import { ReactComponent as SexNudityIcon } from "../images/sex-nudity-icon.svg";
+import { ReactComponent as ThreatHorrorIcon } from "../images/threat-horror-icon.svg";
+import { ReactComponent as ViolenceIcon } from "../images/violence-icon.svg";
 import { FinalRating, Questions } from "./index";
 
 const topics = [
   // Dangerous behaviour
   {
+    id: 0,
+    icon: <DangerIcon fill="#fff" />,
+    color: "#6102d2",
     categoryTitle: "Dangerous Behaviour",
     categoryDescription:
-      "Please describe the way that dangerous behaviour is depicted in your film. This could include risky acts, self-harm or the use of weapons.",
+      "Please select the option that best describes how dangerous behaviour features in your film:",
     answerOptions: [
       {
         answerText:
@@ -37,28 +47,30 @@ const topics = [
   },
   // Discrimination
   {
+    id: 1,
+    icon: <DiscriminationIcon fil="#fff" />,
+    color: "#fe346e",
     categoryTitle: "Discrimination",
     categoryDescription:
-      "Please describe the way that discrimination such as racism or homophobic feature in your film.",
+      "Please select the option that best describes how discrimination features in your film:",
     answerOptions: [
       {
-        answerText:
-          "Discriminatory language does not feature at all, or is clearly disapproved of within the film.",
+        answerText: "No discriminatory language.",
         ageRating: "U",
       },
       {
         answerText:
-          "Discriminatory language or behaviour features a small amount but is clearly disapproved of, or is in an educational or historical context.",
+          "It features a small amount but is disapproved of is contextually appropriate.",
         ageRating: "PG",
       },
       {
         answerText:
-          "Discriminatory language or behaviour features but is not endorsed by the work as a whole. Aggressive discriminatory language or behaviour features but is clearly condemned.",
+          "Aggressive discriminatory language or behaviour features but is clearly condemned.",
         ageRating: "12",
       },
       {
         answerText:
-          "The work as a whole must not endorse discriminatory language or behaviour, although there may be racist, homophobic or other discriminatory themes and language.",
+          "Some racist, homophobic or other discriminatory themes and language feature on occasion.",
         ageRating: "15",
       },
       {
@@ -70,42 +82,44 @@ const topics = [
   },
   // Drugs
   {
+    id: 2,
+    icon: <DrugsIcon fil="#fff" />,
+    color: "#fcdb00",
     categoryTitle: "Drugs",
     categoryDescription:
-      "Please describe the way that illegal drugs or drug misuse feature in your film.",
+      "Please select the option that best describes how drugs feature in your film:",
     answerOptions: [
       {
-        answerText:
-          "No mention of drugs, or references to illegal drugs or drug misuse are infrequent, or have a clear educational purpose or anti-drug message suitable for young children.",
+        answerText: "None featured, or clear anti-drug themes.",
         ageRating: "U",
       },
       {
-        answerText:
-          "References to illegal drugs or drug misuse are innocuous or carry a suitable anti-drug message.",
+        answerText: "Some very mild references.",
         ageRating: "PG",
       },
       {
-        answerText:
-          "Misuse of drugs is infrequent and does not glamorise or give detailed instruction.",
+        answerText: "Some drug use shown, but it is infrequent.",
         ageRating: "12",
       },
       {
         answerText:
-          "Drug taking is shown but the work as a whole does not promote or encourage drug misuse (eg: through detailed instruction). Easily accessible and highly dangerous substances (for example, aerosols or solvents) do not feature.",
+          "Drug taking is shown, but it does promote or encourage drug misuse.",
         ageRating: "15",
       },
       {
-        answerText:
-          "Strong, frequent drug use or abuse of easily accessible and highly dangerous substances feature throughout the film.",
+        answerText: "Strong, frequent drug use features throughout.",
         ageRating: "18",
       },
     ],
   },
   // Language
   {
+    id: 3,
+    icon: <LnaguageIcon fil="#fff" />,
+    color: "#0cd68a",
     categoryTitle: "Language",
     categoryDescription:
-      "Please describe the way that bad language features in your film.",
+      "Please select the option that best describes how bad language features in your film:",
     answerOptions: [
       {
         answerText: "Infrequent use only of very mild bad language.",
@@ -118,38 +132,41 @@ const topics = [
       },
       {
         answerText:
-          "There may be moderate bad language. Strong language may be permitted, depending on the manner in which it is used, who is using the language, its frequency within the work as a whole and any special contextual justification.",
+          "Moderate bad language, with rare instances of strong language.",
         ageRating: "12",
       },
       {
         answerText:
-          "There may be strong language. Very strong language may be permitted, depending on the manner in which it is used, who is using the language, its frequency within the work as a whole and any special contextual justification.",
+          "Strong languages features with rare instances of very strong language.",
         ageRating: "15",
       },
       {
-        answerText: "Strong language features frequently throughout the film.",
+        answerText: "Very strong language features frequently.",
         ageRating: "18",
       },
     ],
   },
   // Sex and Nudity
   {
+    id: 4,
+    icon: <SexNudityIcon fil="#fff" />,
+    color: "#2238af",
     categoryTitle: "Sex and Nudity",
     categoryDescription:
-      "There are no constraints on nudity in a non-sexual or educational context. Sexual nudity may be permitted but strong detail is likely to be brief or presented in a comic context.",
+      "Please select the option that best describes how sex or nudity feature in your film:",
     answerOptions: [
       {
-        answerText: "Occasional nudity, with no sexual context.",
+        answerText: "Occasional nudity, but with no sexual context.",
         ageRating: "U",
       },
       {
         answerText:
-          "Some nudity, with no sexual context. Sexual activity is implied, but is discreet and infrequent. Some mild sex references and innuendo are featured.",
+          "Some nudity, with no sexual context. Sexual activity is implied, or innuendo features.",
         ageRating: "PG",
       },
       {
         answerText:
-          "Some nudity, but in a sexual context it is brief and discreet.",
+          "Some nudity, but in a sexual context it is brief and only implied.",
         ageRating: "12",
       },
       {
@@ -166,18 +183,21 @@ const topics = [
   },
   // Threat and Horror
   {
+    id: 5,
+    icon: <ThreatHorrorIcon fil="#fff" />,
+    color: "#fe346e",
     categoryTitle: "Threat and Horror",
     categoryDescription:
-      "Please describe the way that threat and horror feature in your film.",
+      "Please select the option that best describes how threat or horror feature in your film:",
     answerOptions: [
       {
         answerText:
-          "Scary or potentially unsettling sequences are mild, brief and unlikely to cause undue anxiety to young children. The outcome is reassuring.",
+          "Scary or potentially unsettling sequences are mild, brief and unlikely to upset children.",
         ageRating: "U",
       },
       {
         answerText:
-          "Frightening sequences or situations where characters are in danger are prolonged or intense. Fantasy settings and comedy may be mitigating factors.",
+          "Frightening sequences where characters are in danger are not prolonged or intense.",
         ageRating: "PG",
       },
       {
@@ -199,13 +219,15 @@ const topics = [
   },
   // Violence
   {
+    id: 6,
+    icon: <ViolenceIcon fil="#fff" />,
+    color: "#6102d2",
     categoryTitle: "Violence",
     categoryDescription:
-      "Please describe the way that violence features in your film.",
+      "Please select the option that best describes how violence features in your film:",
     answerOptions: [
       {
-        answerText:
-          "Violence is generally very mild. Some mild violence features but is justified by context (for example, comedic, animated, wholly unrealistic).",
+        answerText: "Violence is generally very mild, unrealistic or comedic.",
         ageRating: "U",
       },
       {
@@ -220,12 +242,12 @@ const topics = [
       },
       {
         answerText:
-          "Strong violence features but it does not dwell on the infliction of pain or injury. No strong gory images, and no strong sadistic violence.",
+          "Some strong violence but no focus on the infliction of pain or injury. No strong gore.",
         ageRating: "15",
       },
       {
         answerText:
-          "Strong or gory violence, with some detail of the infliction of pain or injury.",
+          "Strong or gory violence, with some focus on the infliction of pain or injury.",
         ageRating: "18",
       },
     ],
