@@ -316,6 +316,14 @@ const Content = () => {
         />
       ) : (
         <main className="form-container">
+          <div className="w-30">
+            <div className="pagination">
+              <h2>Topics</h2>
+              {topics.map((topic) => (
+                <button className="item">{topic.categoryTitle}</button>
+              ))}
+            </div>
+          </div>
           <div className="w-70">
             <Questions
               topics={topics}
@@ -324,14 +332,6 @@ const Content = () => {
               currentTopic={currentTopic}
               setCurrentTopic={setCurrentTopic}
             />
-          </div>
-          <div className="w-30">
-            <div className="pagination">
-              <h2>Topics</h2>
-              {topics.map((topic) => (
-                <button className="item">{topic.categoryTitle}</button>
-              ))}
-            </div>
           </div>
         </main>
       )}
