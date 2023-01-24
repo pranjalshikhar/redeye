@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../images/logo.svg";
 
@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="logo">
             <Logo />
             <Link to="/" className="active">
-              <a>Rate My Film</a>
+              Rate My Film
             </Link>
           </div>
           <div>

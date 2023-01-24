@@ -20,7 +20,7 @@ const Header = () => {
         <div className="logo">
           <Logo />
           <Link to="/" className="active">
-            <a>Rate My Film</a>
+            Rate My Film
           </Link>
         </div>
         <nav className="navigation" id="navBar">
