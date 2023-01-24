@@ -55,14 +55,12 @@ const Header = () => {
         </div>
 
         <div className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
-          <Link to="/" onClick={() => closeMenu()} exact>
-            <span className="link">Home</span>
+          <Link to="/" onClick={() => closeMenu()} className="link">
+            Home
           </Link>
-
-          <Link to="/about" onClick={() => closeMenu()} exact>
-            <span className="link">About</span>
+          <Link to="/about" onClick={() => closeMenu()} className="link">
+            About
           </Link>
-
           <Mailto
             email="danieljamescranney@gmail.com"
             subject="Rate my Film"
