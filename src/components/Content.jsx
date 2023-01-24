@@ -12,25 +12,24 @@ const topics = [
   // Dangerous behaviour
   {
     id: 0,
-    icon: <DangerIcon fill="#fff" />,
+    icon: <DangerIcon fill="#FFF" />,
     color: "#c940ea",
     categoryTitle: "Dangerous Behaviour",
     categoryDescription:
       "Please select the option that best describes how dangerous behaviour features in your film:",
     answerOptions: [
       {
-        answerText:
-          "Potentially dangerous or anti-social behaviour is clearly disapproved of, and no emphasis is placed on weapons.",
+        answerText: "It is disapproved of, and weapons are not emphasised.",
         ageRating: "U",
       },
       {
         answerText:
-          "Potentially dangerous behaviour is presented as safe or fun, but no detail is shown. Weapons (such as knives) are featured, but are not glamorised. No focus on anti-social behaviour.",
+          "Weapons or mildly dangerous behaviour are featured, but are not glamorised.",
         ageRating: "PG",
       },
       {
         answerText:
-          "Potentially dangerous behaviour features but is not promoted, and weapons are featured, also (but not glamorised). Anti-social behaviour is not endorsed in the film.",
+          "Weapons or moderately dangerous behaviour feature, but are not glamorised.",
         ageRating: "12",
       },
       {
@@ -40,7 +39,7 @@ const topics = [
       },
       {
         answerText:
-          "Characters are shown engaging in dangerous behaviour such as self-harming and some gory detail is shown. If weapons are featured, they are used regularly throughout the film.",
+          "Behaviour such as self-harm is shown, and with gory detail. If weapons feature, they are used regularly.",
         ageRating: "18",
       },
     ],
@@ -48,16 +47,13 @@ const topics = [
   // Discrimination
   {
     id: 1,
-    icon: <DiscriminationIcon fil="#fff" />,
+    icon: <DiscriminationIcon fill="#FFF" />,
     color: "#ff5f99",
     categoryTitle: "Discrimination",
     categoryDescription:
       "Please select the option that best describes how discrimination features in your film:",
     answerOptions: [
-      {
-        answerText: "No discriminatory language.",
-        ageRating: "U",
-      },
+      { answerText: "No discriminatory language.", ageRating: "U" },
       {
         answerText:
           "It features a small amount but is disapproved of and is contextually appropriate.",
@@ -83,7 +79,7 @@ const topics = [
   // Drugs
   {
     id: 2,
-    icon: <DrugsIcon fil="#fff" />,
+    icon: <DrugsIcon fill="#FFF" />,
     color: "#ff9057",
     categoryTitle: "Drugs",
     categoryDescription:
@@ -93,10 +89,7 @@ const topics = [
         answerText: "None featured, or clear anti-drug themes.",
         ageRating: "U",
       },
-      {
-        answerText: "Some very mild references.",
-        ageRating: "PG",
-      },
+      { answerText: "Some very mild references.", ageRating: "PG" },
       {
         answerText: "Some drug use shown, but it is infrequent.",
         ageRating: "12",
@@ -115,21 +108,17 @@ const topics = [
   // Language
   {
     id: 3,
-    icon: <LnaguageIcon fil="#fff" />,
+    icon: <LanguageIcon fill="#FFF" />,
     color: "#febd35",
     categoryTitle: "Bad Language",
     categoryDescription:
       "Please select the option that best describes how bad language features in your film:",
     answerOptions: [
       {
-        answerText: "Infrequent use only of very mild bad language.",
+        answerText: "Infrequent use of very mild bad language.",
         ageRating: "U",
       },
-      {
-        answerText:
-          "Mild bad language only. Aggressive or very frequent use of mild bad language may result in a work being passed at a higher category.",
-        ageRating: "PG",
-      },
+      { answerText: "Mild bad language only.", ageRating: "PG" },
       {
         answerText:
           "Moderate bad language, with rare instances of strong language.",
@@ -149,7 +138,7 @@ const topics = [
   // Sex and Nudity
   {
     id: 4,
-    icon: <SexNudityIcon fil="#fff" />,
+    icon: <SexNudityIcon fill="#FFF" />,
     color: "#3598fe",
     categoryTitle: "Sex and Nudity",
     categoryDescription:
@@ -170,13 +159,12 @@ const topics = [
         ageRating: "12",
       },
       {
-        answerText:
-          "Sexual activity, but without strong detail. There may be strong verbal references to sexual behaviour, but any depiction of the stronger forms of sexual violence is not detailed or prolonged.",
+        answerText: "Sexual activity, but without strong detail.",
         ageRating: "15",
       },
       {
         answerText:
-          "Sexual activity, with some strong detail. Repeated strong verbal references to sexual behaviour, and references to sexual threat are more prolonged.",
+          "Sexual activity, with some strong detail. Repeated strong verbal references to sexual behaviour.",
         ageRating: "18",
       },
     ],
@@ -184,7 +172,7 @@ const topics = [
   // Threat and Horror
   {
     id: 5,
-    icon: <ThreatHorrorIcon fil="#fff" />,
+    icon: <ThreatHorrorIcon fill="#FFF" />,
     color: "#c940ea",
     categoryTitle: "Threat and Horror",
     categoryDescription:
@@ -202,7 +190,7 @@ const topics = [
       },
       {
         answerText:
-          "Moderate physical and psychological threat and horror sequences. Although some scenes may be disturbing, the overall tone is not. Horror sequences are frequent or sustained.",
+          "Moderate physical and psychological threat and horror sequences.",
         ageRating: "12",
       },
       {
@@ -220,7 +208,7 @@ const topics = [
   // Violence
   {
     id: 6,
-    icon: <ViolenceIcon fil="#fff" />,
+    icon: <ViolenceIcon fill="#FFF" />,
     color: "#ff5f99",
     categoryTitle: "Violence",
     categoryDescription:
@@ -231,13 +219,12 @@ const topics = [
         ageRating: "U",
       },
       {
-        answerText:
-          "Violence is mild. Some moderate violence, without detail, and it is justified by its context (for example, history, comedy or fantasy).",
+        answerText: "Violence is mild. Some moderate violence, without detail.",
         ageRating: "PG",
       },
       {
         answerText:
-          "Moderate violence but it does not dwell on detail. No emphasis on injuries or blood, but occasional gory moments feature and are justified by the context.",
+          "Moderate violence but it does not dwell on detail. No emphasis on injuries or blood.",
         ageRating: "12",
       },
       {
@@ -296,6 +283,10 @@ const Content = () => {
       setShowRating(true);
     }
 
+    const handleBackButton = () => {
+      setCurrentTopic(currentTopic - 1);
+    };
+
     if (finalAgeRating < ratingRank) {
       setFinalAgeRating(ratingRank);
     }
@@ -303,6 +294,10 @@ const Content = () => {
     useEffect(() => {
       setRatingColor(colors[finalAgeRating]);
     }, [finalAgeRating]);
+
+    useEffect(() => {
+      console.log(answers);
+    }, [answers]);
   };
 
   return (
@@ -328,9 +323,11 @@ const Content = () => {
             <Questions
               topics={topics}
               handleAnswerOptionClick={handleAnswerOptionClick}
+              handleBackButton={handleBackButton}
               i={i}
               currentTopic={currentTopic}
               setCurrentTopic={setCurrentTopic}
+              answers={answers}
             />
           </div>
         </main>

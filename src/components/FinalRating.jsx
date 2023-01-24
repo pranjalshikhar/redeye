@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Film from "./Film";
-import { ReactComponent as RatingGraphic } from "../images/rating-graphic.svg";
 
 let ratedCategories = [];
 let ratedCategoryList = [];
