@@ -55,11 +55,11 @@ const Header = () => {
         </div>
 
         <div className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
-          <Link to={"/"} onClick={() => closeMenu()} exact>
+          <Link to="/" onClick={() => closeMenu()} exact>
             <span className="link">Home</span>
           </Link>
 
-          <Link to={"/about"} onClick={() => closeMenu()} exact>
+          <Link to="/about" onClick={() => closeMenu()} exact>
             <span className="link">About</span>
           </Link>
 
