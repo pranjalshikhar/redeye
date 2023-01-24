@@ -43,12 +43,9 @@ const Home = () => {
               <animated.h1 style={noDelay}>
                 Get to know your audience.
               </animated.h1>
-              <animated.h1 style={noDelay}>
-                Find out who your film is suitable for.
-              </animated.h1>
               <animated.p style={mediumDelay}>
-                In just a few clicks, you can learn more about who your film
-                might be suitable for.
+                Learn more about who your film is suitable for, and find similar
+                films in under 60 seconds.
               </animated.p>
               <animated.button
                 onClick={() => setShowContent(true)}
