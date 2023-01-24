@@ -22,11 +22,11 @@ const Footer = () => {
             <p>
               A project by{" "}
               <a href="" target="_blank" rel="noreferrer" className="left">
-                Daniel Cranney
+                Pranjal Shikhar
               </a>{" "}
               |{" "}
               <a
-                href="http://www.github.com/pranjalshikhar"
+                href="http://www.github.com/pranjalshikhar/redeye"
                 target="_blank"
                 rel="noreferrer"
                 className="left"
